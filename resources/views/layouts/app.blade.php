@@ -50,7 +50,9 @@
 
         <nav id="main-nav-wrap">
             <ul class="main-navigation sf-menu">
-                <li class="current"><a href="index.html" title="">Home</a></li>
+                <li class="@if($_SERVER['REQUEST_URI'] =="/") current @endif">
+                    <a href="index.html" title="">Home</a>
+                </li>
                 <li class="has-children">
                     <a href="category.html" title="">Categories</a>
                     <ul class="sub-menu">
@@ -201,10 +203,10 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ url("js/jquery-2.1.3.min.js") }}"></script>
+<script src="{{ url("js/plugins.js") }}"></script>
+<script src="{{ url("js/jquery.appear.js") }}"></script>
+<script src="{{ url("js/main.js") }}"></script>
 
 </body>
 

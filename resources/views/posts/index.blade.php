@@ -68,7 +68,8 @@
                                             <li><a href="#" class="author">Naruto Uzumaki</a></li>
                                         </ul>
 
-                                        <h1 class="slide-title"><a href="single-standard.html" title="">Music Album Cover Designs for Inspiration</a></h1>
+                                        <h1 class="slide-title">
+                                            <a href="single-standard.html" title="">Music Album Cover Designs for Inspiration</a></h1>
                                     </div>
 
                                 </div>
@@ -81,7 +82,7 @@
             @foreach($posts as $post)
             <article class="brick entry format-standard animate-this">
                 <div class="entry-thumb">
-                    <a href="single-standard.html" class="thumb-link">
+                    <a href="{{ url("posts/$post->id") }}" class="thumb-link">
                         <img src="{{ url('storage').'/'. $post->media}}" alt="building">
                     </a>
                 </div>
@@ -89,11 +90,10 @@
                     <div class="entry-header">
                         <div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Photography</a>
+               				<a href="#">{{ $post->category_name }}</a>
                			</span>
                         </div>
-                        <h1 class="entry-title"><a href="single-standard.html">{{ $post->title }}</a></h1>
+                        <h1 class="entry-title"><a href="{{ url("posts/$post->id") }}">{{ $post->title }}</a></h1>
                     </div>
                     <div class="entry-excerpt">
                         {{ $post->description }}

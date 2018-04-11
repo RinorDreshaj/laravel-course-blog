@@ -13,4 +13,17 @@ class PostsController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $previous_id = Post::where('id', '<', $post->id)->max('id');
+        $previous = Post::where('id', '=' , $previous_id)->first();
+
+        $next_id = Post::where('id', '>', $post->id)->min('id');
+        $next = Post::where('id', $next_id)->first();
+
+        return view('posts.show', compact('post', 'previous', 'next' ,'next_id'));
+    }
 }
