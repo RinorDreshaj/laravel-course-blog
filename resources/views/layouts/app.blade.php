@@ -207,6 +207,20 @@
 <script src="{{ url("js/plugins.js") }}"></script>
 <script src="{{ url("js/jquery.appear.js") }}"></script>
 <script src="{{ url("js/main.js") }}"></script>
+<script>
+    $(".delete-button").click(function(e) {
+        var confirm_delete = confirm("Are you sure you want to delete this resource?");
+
+        if(!confirm_delete)
+        {
+            e.preventDefault()
+        }
+    });
+</script>
+
+
+@yield('scripts')
+
 
 </body>
 

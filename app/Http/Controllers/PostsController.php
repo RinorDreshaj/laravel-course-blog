@@ -16,7 +16,9 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('id',$id)->with('comments')->first();
+
+//        dd($post->toArray());
 
         $previous_id = Post::where('id', '<', $post->id)->max('id');
         $previous = Post::where('id', '=' , $previous_id)->first();
