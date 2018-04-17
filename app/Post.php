@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = ['user_id', 'title', 'description', 'category_id', 'media'];
+
     protected $appends = ['category_name'];
 
     public function category()
@@ -31,5 +33,17 @@ class Post extends Model
     public function getTitleAttribute()
     {
         return ucfirst($this->attributes['title']);
+    }
+
+    public static function fileUpload($request)
+    {
+        if(isset($request->file))
+        {
+            $media_path = $request->file('file')->store('public');
+            $image = explode('/', $media_path);
+            return $image[count($image) - 1];
+        }
+
+        return null;
     }
 }
