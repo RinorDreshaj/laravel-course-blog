@@ -15,6 +15,8 @@
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    @yield('styles')
+
     <!-- CSS
   ================================================== -->
     <link rel="stylesheet" href="{{ url('css/base.css') }}">
@@ -50,6 +52,12 @@
 
         <nav id="main-nav-wrap">
             <ul class="main-navigation sf-menu">
+                @if(Auth::check())
+                <li class="@if($_SERVER['REQUEST_URI'] =="/users/posts") current @endif">
+                    <a href="{{ url('/users/posts') }}" title="">Your Channel</a>
+                </li>
+                @endif
+
                 <li class="@if($_SERVER['REQUEST_URI'] =="/") current @endif">
                     <a href="{{ url('/') }}" title="">Home</a>
                 </li>
@@ -67,17 +75,15 @@
         </nav> <!-- end main-nav-wrap -->
 
         <div class="search-wrap">
-
-            <form role="search" method="get" class="search-form" action="#">
+            <form role="search" method="get" class="search-form" action="{{ url('/search') }}">
                 <label>
                     <span class="hide-content">Search for:</span>
-                    <input type="search" class="search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    <input type="search" class="search-field" placeholder="Type Your Keywords" value="" name="name">
                 </label>
                 <input type="submit" class="search-submit" value="Search">
             </form>
 
             <a href="#" id="close-search" class="close-btn">Close</a>
-
         </div> <!-- end search wrap -->
 
         <div class="triggers">
@@ -130,7 +136,7 @@
                 <h4>Social</h4>
 
                 <ul>
-                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://twitter.com">Twitter</a></li>
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">Dribbble</a></li>
                     <li><a href="#">Google+</a></li>

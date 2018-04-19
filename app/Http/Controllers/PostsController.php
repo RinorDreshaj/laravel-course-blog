@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -27,5 +27,12 @@ class PostsController extends Controller
         $next = Post::where('id', $next_id)->first();
 
         return view('posts.show', compact('post', 'previous', 'next' ,'next_id'));
+    }
+
+    public function category(Request $request, $id)
+    {
+        $posts = Post::where('category_id' , $id)->paginate();
+
+        return view('posts.index' , compact('posts'));
     }
 }

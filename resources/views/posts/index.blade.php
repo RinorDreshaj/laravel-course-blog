@@ -1,10 +1,57 @@
 @extends('layouts.app')
 
-@section('content')
-<!-- masonry
-================================================== -->
-<section id="bricks">
+@section('styles')
 
+@endsection
+<style>
+    .pagination {
+        margin: 3rem auto;
+        text-align: center;
+    }
+
+    .pagination ul li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .pagination .page-item {
+        font-family: "montserrat-bold", sans-serif;
+        font-size: 15px;
+        line-height: 24px;
+        display: inline-block;
+        padding: 6px 12px;
+        height: 36px;
+        margin-right: 6px;
+        margin-bottom: 9px;
+        color: #2b2b2b;
+        background-color: #dbdbdb;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .pagination .page-item:hover {
+        background: #000000;
+        color: white;
+    }
+
+    .pagination .current,
+    .pagination .current:hover {
+        background-color: #000000;
+        color: white;
+    }
+
+    .pagination .inactive,
+    .pagination .inactive:hover {
+        background-color: #DBDBDB;
+        color: #919191;
+    }
+</style>
+@section('content')
+<section id="bricks">
     <div class="row masonry">
 
         <!-- brick-wrapper -->
@@ -108,19 +155,21 @@
 
     <div class="row">
 
-        <nav class="pagination">
-            <span class="page-numbers prev inactive">Prev</span>
-            <span class="page-numbers current">1</span>
-            <a href="#" class="page-numbers">2</a>
-            <a href="#" class="page-numbers">3</a>
-            <a href="#" class="page-numbers">4</a>
-            <a href="#" class="page-numbers">5</a>
-            <a href="#" class="page-numbers">6</a>
-            <a href="#" class="page-numbers">7</a>
-            <a href="#" class="page-numbers">8</a>
-            <a href="#" class="page-numbers">9</a>
-            <a href="#" class="page-numbers next">Next</a>
-        </nav>
+        {{ $posts->links() }}
+
+        {{--<nav class="pagination">--}}
+            {{--<span class="page-numbers prev inactive">Prev</span>--}}
+            {{--<span class="page-numbers current">1</span>--}}
+            {{--<a href="#" class="page-numbers">2</a>--}}
+            {{--<a href="#" class="page-numbers">3</a>--}}
+            {{--<a href="#" class="page-numbers">4</a>--}}
+            {{--<a href="#" class="page-numbers">5</a>--}}
+            {{--<a href="#" class="page-numbers">6</a>--}}
+            {{--<a href="#" class="page-numbers">7</a>--}}
+            {{--<a href="#" class="page-numbers">8</a>--}}
+            {{--<a href="#" class="page-numbers">9</a>--}}
+            {{--<a href="#" class="page-numbers next">Next</a>--}}
+        {{--</nav>--}}
 
     </div>
 
